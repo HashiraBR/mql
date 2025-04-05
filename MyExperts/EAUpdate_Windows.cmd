@@ -1,6 +1,5 @@
 @echo off
-:: set "BASE_DIR=C:\Users\Administrator\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Experts\MyExperts"
-set "BASE_DIR=C:\Users\Makleyston\Downloads\EAS"
+set "BASE_DIR=C:\Users\Administrator\AppData\Roaming\MetaQuotes\Terminal\D0E8209F77C8CF37AD8BF550E51FF075\MQL5\Experts\MyExperts"
 set "BASE_URL=https://raw.githubusercontent.com/HashiraBR/mql/main/MyExperts"
 set "BASE_URL_CONFIGS=https://raw.githubusercontent.com/HashiraBR/mql/main/Analysis"
 set "LAST_CONFIG=out24-mar25"
