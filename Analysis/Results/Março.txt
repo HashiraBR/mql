@@ -1,0 +1,51 @@
+Resultados de Março:
+
+TrendPulseA: 
+Negociações: 30
+L/P: 52,20 (11 com ganhos e 19 com perdas)
+FL: 1.09
+Payoff: 1.74
+
+PullbackEA:
+Negociações: 10
+L/P: 98,80 (2 com ganhos e 8 com perdas)
+FL: 1.82
+Payoff: 9.88
+
+WStoch:
+Negociações: 21 (6 com ganhos e 15 com perdas)
+L/P: -34.80
+FL: 0.87
+Payoff: -1.66
+
+CandleMaster:
+Negociações: 37 (21 com ganhos e 16 com perdas)
+L/P: 646.80
+FL: 2.38
+Payoff: 17.48
+
+Total: 763,00 de ganho
+
+
+Resumo Final
+Total de negociações: 98 trades
+
+Lucro líquido: R$763,00
+
+Fator de Lucro: 2.06
+
+Payoff médio: 21.94
+
+Taxa de acerto: 40.82%
+
+Expectativa matemática por trade: R$4,01
+
+Lucro médio por trade vencedor: R$19,08
+
+Prejuízo médio por trade perdedor: R$6,39
+
+Drawdown máximo estimado: R$95,85
+
+Estratégia mais lucrativa: CandleMaster (FL = 2.38)
+
+Estratégia com pior desempenho: WStoch (FL = 0.87)
