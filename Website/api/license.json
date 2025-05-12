@@ -1,0 +1,14 @@
+{
+  "active": true,
+  "symbol": "WIN",
+  "id": "Xv9#lQ2@m8",
+  "expiration_date": 1735689600,
+  "max_lot_size": 10.0,
+  "allow_real_account": true,
+  "allow_demo_account": true,
+  "max_open_positions": 5,
+  "version": 2,
+  "customer_name": "Danne Makleyston G. Pereira",
+  "response_code": 200,
+  "message": "Subscription active"
+}

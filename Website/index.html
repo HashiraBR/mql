@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum EAs - Expert Advisors para o Mercado Financeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        .about-card {
+            transition: all 0.3s ease;
+        }
+        .about-card:hover {
+            transform: scale(1.03);
+        }
+        .stats-item {
+            transition: all 0.3s ease;
+        }
+        .stats-item:hover {
+            transform: scale(1.05);
+        }
+        .client-area-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            padding: 0.5rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgba(245, 158, 11, 0.3), 0 2px 4px -1px rgba(245, 158, 11, 0.2);
+        }
+        .client-area-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(245, 158, 11, 0.3), 0 4px 6px -2px rgba(245, 158, 11, 0.2);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="gradient-bg text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-robot text-2xl mr-2 text-blue-300"></i>
+                    <span class="text-xl font-bold">Quantum<span class="text-blue-300">EAs</span></span>
+                </div>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="hover:text-blue-300 transition">Início</a>
+                    <a href="#eaproducts" class="hover:text-blue-300 transition">Nossos EAs</a>
+                    <a href="#features" class="hover:text-blue-300 transition">Vantagens</a>
+                    <a href="#about" class="hover:text-blue-300 transition">Sobre</a>
+                    <a href="#contact" class="hover:text-blue-300 transition">Contato</a>
+                    <a href="#client-area" class="client-area-btn hover:bg-opacity-90 transition flex items-center">
+                        <i class="fas fa-user-circle mr-2"></i> Área do cliente
+                    </a>
+                </nav>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Potencialize seus investimentos com nossos <span class="text-blue-300">Expert Advisors</span></h1>
+                <p class="text-xl mb-8 text-blue-100">Algoritmos de negociação automatizados que operam 24/7 no mercado financeiro com estratégias comprovadas.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#eaproducts" class="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 text-center">Conheça nossos EAs</a>
+                    <a href="#features" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition duration-300 text-center">Como funciona</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Trading Dashboard" class="rounded-lg shadow-2xl border-4 border-blue-300">
+            </div>
+        </div>
+    </section>
+
+    <!-- EA Products Section -->
+    <section id="eaproducts" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Nossos <span class="text-blue-600">Expert Advisors</span></h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Algoritmos especializados para diferentes estratégias e perfis de investidor.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- EA Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Scalper Pro EA" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Mais vendido</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Scalper Pro EA</h3>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded">Forex</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Operações rápidas no mercado de câmbio com gerenciamento de risco inteligente.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">4.7 (128 avaliações)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 line-through text-sm">R$ 1.299</span>
+                                <span class="text-blue-600 font-bold text-xl ml-2">R$ 999</span>
+                            </div>
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EA Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Trend Master EA" class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Trend Master EA</h3>
+                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Índices</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Identifica e acompanha tendências de mercado com alta precisão em diversos ativos.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">5.0 (87 avaliações)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-blue-600 font-bold text-xl">R$ 1.499</span>
+                            </div>
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EA Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-300 card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1642790559316-8e462f4d864f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Gold Hunter EA" class="w-full h-48 object-cover">
+                        <div class="absolute top-4 right-4 bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">Lançamento</div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold text-gray-800">Gold Hunter EA</h3>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Metais</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Estratégia especializada no mercado de ouro com operações em múltiplos timeframes.</p>
+                        <div class="flex items-center mb-4">
+                            <div class="flex text-yellow-400 mr-2">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="text-gray-600 text-sm">4.2 (43 avaliações)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-gray-500 line-through text-sm">R$ 899</span>
+                                <span class="text-blue-600 font-bold text-xl ml-2">R$ 699</span>
+                            </div>
+                            <a href="#" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition">Detalhes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition">
+                    Ver todos os EAs
+                    <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Por que escolher nossos <span class="text-blue-600">Expert Advisors?</span></h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tecnologia avançada e resultados consistentes para sua operação automatizada.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-blue-100 text-blue-600 mx-auto">
+                        <i class="fas fa-brain text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Altamente configurável</h3>
+                    <p class="text-gray-600">Vasta parametrização que permitem gerenciar, dentre outros, os horários de operação e as metas diárias (loss/gain).</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-green-100 text-green-600 mx-auto">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Gerenciamento de Risco</h3>
+                    <p class="text-gray-600">Proteção avançada contra drawdown excessivo e stop loss inteligente em todas as operações.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-purple-100 text-purple-600 mx-auto">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Backtest Completo</h3>
+                    <p class="text-gray-600">Todas as estratégias são rigorosamente testadas em dados históricos antes do lançamento.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-yellow-100 text-yellow-600 mx-auto">
+                        <i class="fas fa-headset text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Suporte Premium</h3>
+                    <p class="text-gray-600">Equipe especializada disponível para auxiliar na instalação e configuração dos EAs.</p>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-red-100 text-red-600 mx-auto">
+                        <i class="fas fa-sync-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Atualizações Constantes</h3>
+                    <p class="text-gray-600">Melhorias contínuas para se adaptar às mudanças do mercado financeiro.</p>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-indigo-100 text-indigo-600 mx-auto">
+                        <i class="fas fa-lock text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Segurança</h3>
+                    <p class="text-gray-600">Algoritmos protegidos contra cópia e uso não autorizado, garantindo sua exclusividade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Sobre a <span class="text-blue-600">QuantumEAs</span></h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Conheça nossa história, missão e equipe por trás dos melhores Expert Advisors do mercado.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Nossa História</h3>
+                    <p class="text-gray-600 mb-4">Fundada em 2018 por um grupo de traders e desenvolvedores apaixonados por mercados financeiros, a QuantumEAs surgiu com o objetivo de democratizar o acesso a estratégias de trading algorítmico de alta performance.</p>
+                    <p class="text-gray-600">Começamos como uma pequena equipe trabalhando em um escritório compartilhado e hoje somos referência no desenvolvimento de EAs no Brasil, com clientes em mais de 15 países.</p>
+                </div>
+                <div class="about-card bg-gray-50 p-6 rounded-xl shadow-md">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Nossa Equipe" class="w-full h-auto rounded-lg">
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Mission -->
+                <div class="about-card bg-blue-50 p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-blue-100 text-blue-600 mx-auto">
+                        <i class="fas fa-bullseye text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Missão</h3>
+                    <p class="text-gray-600">Desenvolver soluções algorítmicas que tornem o trading automatizado acessível, seguro e lucrativo para traders de todos os níveis.</p>
+                </div>
+                
+                <!-- Vision -->
+                <div class="about-card bg-purple-50 p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-purple-100 text-purple-600 mx-auto">
+                        <i class="fas fa-eye text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Visão</h3>
+                    <p class="text-gray-600">Ser reconhecida como a principal desenvolvedora de Expert Advisors na América Latina, com presença global e tecnologia de ponta.</p>
+                </div>
+                
+                <!-- Values -->
+                <div class="about-card bg-green-50 p-8 rounded-xl shadow-md text-center">
+                    <div class="feature-icon bg-green-100 text-green-600 mx-auto">
+                        <i class="fas fa-heart text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Valores</h3>
+                    <p class="text-gray-600">Transparência, inovação, excelência técnica e compromisso com os resultados dos nossos clientes.</p>
+                </div>
+            </div>
+            
+            <!-- Team -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-center text-gray-800 mb-8">Conheça Nossa Equipe</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Team Member 1 -->
+                    <div class="about-card bg-white p-6 rounded-xl shadow-md text-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Silva" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-100">
+                        <h4 class="font-bold text-gray-800">Carlos Silva</h4>
+                        <p class="text-blue-600 font-medium mb-2">CEO & Fundador</p>
+                        <p class="text-gray-600 text-sm">15+ anos de experiência em trading algorítmico e desenvolvimento de sistemas financeiros.</p>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="about-card bg-white p-6 rounded-xl shadow-md text-center">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana Oliveira" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-100">
+                        <h4 class="font-bold text-gray-800">Ana Oliveira</h4>
+                        <p class="text-blue-600 font-medium mb-2">Diretora de Pesquisa</p>
+                        <p class="text-gray-600 text-sm">PhD em Matemática Financeira e especialista em modelagem de estratégias quantitativas.</p>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="about-card bg-white p-6 rounded-xl shadow-md text-center">
+                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Ricardo Mendes" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-100">
+                        <h4 class="font-bold text-gray-800">Ricardo Mendes</h4>
+                        <p class="text-blue-600 font-medium mb-2">CTO</p>
+                        <p class="text-gray-600 text-sm">Especialista em desenvolvimento de sistemas de alta frequência e infraestrutura de trading.</p>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="about-card bg-white p-6 rounded-xl shadow-md text-center">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Juliana Costa" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-100">
+                        <h4 class="font-bold text-gray-800">Juliana Costa</h4>
+                        <p class="text-blue-600 font-medium mb-2">Diretora Comercial</p>
+                        <p class="text-gray-600 text-sm">Experiência em gestão de produtos financeiros e relacionamento com clientes institucionais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto para automatizar seus investimentos?</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Junte-se a centenas de traders que já estão colhendo os frutos da negociação algorítmica.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#eaproducts" class="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300">Escolher um EA</a>
+                <a href="#contact" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition duration-300">Fale conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Perguntas <span class="text-blue-600">Frequentes</span></h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">Tire suas dúvidas sobre nossos Expert Advisors.</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-6 bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold text-gray-800">Preciso ter conhecimento em programação para usar os EAs?</h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden">
+                        <p>Não é necessário nenhum conhecimento em programação. Nossos EAs são pré-configurados e acompanham um manual detalhado de instalação. Além disso, oferecemos suporte especializado para ajudá-lo em todo o processo. As configurações dos parâmetros podem ser gerados por você ou você pode utilizar a parametrização mensal disponível na área do cliente.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-6 bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold text-gray-800">Em quais corretoras os EAs podem ser utilizados?</h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden">
+                        <p>Nossos EAs são compatíveis com as principais corretoras que oferecem a plataforma MetaTrader 5. Recomendamos corretoras regulamentadas com boa liquidez e execução rápida para melhor desempenho.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-6 bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold text-gray-800">Qual o valor mínimo para começar a operar com os EAs?</h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden">
+                        <p>O valor mínimo varia de acordo com o EA escolhido e o tamanho do lote operado. Em geral, recomendamos um capital inicial de pelo menos R$ 2.000 para operação conservadora, mas alguns EAs podem funcionar com menos.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-6 bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold text-gray-800">Os EAs funcionam em VPS?</h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden">
+                        <p>Sim, todos nossos EAs são totalmente compatíveis com VPS (Virtual Private Server). Na verdade, recomendamos fortemente o uso de VPS para garantir operação ininterrupta 24 horas por day, 7 dias por semana.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-6 bg-white p-6 rounded-xl shadow-md">
+                    <button class="flex justify-between items-center w-full text-left focus:outline-none">
+                        <h3 class="text-lg font-semibold text-gray-800">Há garantia de resultados?</h3>
+                        <i class="fas fa-chevron-down text-blue-600 transition-transform duration-300"></i>
+                    </button>
+                    <div class="mt-4 text-gray-600 hidden">
+                        <p>O mercado financeiro é dinâmico e imprevisível por natureza, portanto não podemos garantir resultados. No entanto, todos nossos EAs passam por rigorosos testes históricos e em conta demo antes de serem liberados. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-12 lg:mb-0 lg:pr-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Entre em <span class="text-blue-600">contato</span></h2>
+                    <p class="text-gray-600 mb-8 text-lg">Tem dúvidas sobre qual EA é ideal para você? Quer saber mais sobre nossos produtos? Deseja que automatizemos sua estratégia? Nossa equipe está pronta para ajudar.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-envelope text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Email</h4>
+                                <p class="text-gray-600">contato@quantumeas.com.br</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-phone-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Telefone</h4>
+                                <p class="text-gray-600">(11) 98765-4321</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                <i class="fas fa-map-marker-alt text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800 mb-1">Endereço</h4>
+                                <p class="text-gray-600">Av. Paulista, 1000 - São Paulo/SP</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold text-gray-800 mb-4">Siga-nos</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="bg-blue-100 text-blue-600 p-3 rounded-full hover:bg-blue-200 transition"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <form class="bg-gray-50 p-8 rounded-xl shadow-md">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nome completo</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Seu nome">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="seu@email.com">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Telefone (opcional)</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="(11) 98765-4321">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Assunto</label>
+                            <select id="subject" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Selecione um assunto</option>
+                                <option value="sales">Dúvidas sobre produtos</option>
+                                <option value="support">Suporte técnico</option>
+                                <option value="partnership">Parcerias</option>
+                                <option value="other">Outros</option>
+                            </select>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Mensagem</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Sua mensagem..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-300">Enviar mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-2xl mr-2 text-blue-400"></i>
+                        <span class="text-xl font-bold">Quantum<span class="text-blue-400">EAs</span></span>
+                    </div>
+                    <p class="text-gray-400">Expert Advisors de alta performance para o mercado financeiro. Operação automatizada com tecnologia de ponta.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Nossos EAs</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Scalper Pro</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Trend Master</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Gold Hunter</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Index Wizard</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Crypto Bot</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Úteis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Tutoriais</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Termos de Uso</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Inscreva-se para receber novidades e dicas sobre trading automatizado.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Seu email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg transition"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 QuantumEAs. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.bg-white.p-6.rounded-xl.shadow-md button').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const content = faqItem.querySelector('div');
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('transform');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle (would need additional implementation)
+        document.querySelector('.md\\:hidden button').addEventListener('click', function() {
+            // This would toggle a mobile menu - needs additional HTML/CSS
+            console.log('Mobile menu clicked - would open menu');
+        });
+    </script>
+</body>
+</html>

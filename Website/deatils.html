@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalper Pro EA - QuantumEAs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #1d4ed8 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+        }
+        .tab-button.active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .backtest-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .backtest-table th, .backtest-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .backtest-table th {
+            background-color: #f9fafb;
+            font-weight: 600;
+        }
+        .backtest-table tr:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="gradient-bg text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <i class="fas fa-robot text-2xl mr-2 text-blue-300"></i>
+                    <span class="text-xl font-bold">Quantum<span class="text-blue-300">EAs</span></span>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="hover:text-blue-300 transition">Início</a>
+                    <a href="index.html#eaproducts" class="hover:text-blue-300 transition">Nossos EAs</a>
+                    <a href="index.html#features" class="hover:text-blue-300 transition">Vantagens</a>
+                    <a href="index.html#testimonials" class="hover:text-blue-300 transition">Depoimentos</a>
+                    <a href="index.html#contact" class="hover:text-blue-300 transition">Contato</a>
+                </nav>
+                <div class="md:hidden">
+                    <button class="text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Header -->
+    <section class="bg-white py-12 border-b border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+                <div>
+                    <div class="flex items-center mb-2">
+                        <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded mr-2">FOREX</span>
+                        <div class="flex text-yellow-400 text-sm">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="text-gray-600 ml-1">4.7 (128 avaliações)</span>
+                        </div>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Scalper Pro EA</h1>
+                    <p class="text-xl text-gray-600">Estratégia de scalping automatizada para pares de moedas com alta liquidez</p>
+                </div>
+                <div class="mt-6 md:mt-0 bg-blue-50 p-4 rounded-lg border border-blue-100">
+                    <div class="flex items-center mb-2">
+                        <span class="text-gray-500 line-through text-lg mr-2">R$ 1.299</span>
+                        <span class="text-blue-600 font-bold text-2xl">R$ 999</span>
+                    </div>
+                    <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-shopping-cart mr-2"></i> Adquirir EA
+                    </button>
+                    <p class="text-xs text-gray-500 mt-2 text-center">Licença vitalícia + 1 ano de atualizações</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Tabs -->
+    <section class="bg-white border-b border-gray-200">
+        <div class="container mx-auto px-6">
+            <div class="flex overflow-x-auto space-x-8">
+                <a href="#overview" class="tab-button py-4 px-1 text-gray-600 hover:text-blue-600 active">Visão Geral</a>
+                <a href="#performance" class="tab-button py-4 px-1 text-gray-600 hover:text-blue-600">Performance</a>
+                <a href="#backtests" class="tab-button py-4 px-1 text-gray-600 hover:text-blue-600">Backtests</a>
+                <a href="#settings" class="tab-button py-4 px-1 text-gray-600 hover:text-blue-600">Configurações</a>
+                <a href="#faq" class="tab-button py-4 px-1 text-gray-600 hover:text-blue-600">FAQ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Content -->
+    <section id="overview" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-2/3">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Visão Geral do Scalper Pro EA</h2>
+                    
+                    <div class="mb-8">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Scalper Pro EA" class="rounded-lg shadow-md w-full">
+                    </div>
+                    
+                    <div class="prose max-w-none">
+                        <p class="text-gray-700 mb-4">O Scalper Pro EA é um algoritmo de negociação automatizado especializado em estratégias de scalping no mercado Forex. Desenvolvido após anos de pesquisa e testes, ele opera em múltiplos pares de moedas com alta liquidez, realizando dezenas de operações curtas por dia com gerenciamento de risco inteligente.</p>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Principais Características</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Operações rápidas com tempo médio de 5-15 minutos</li>
+                            <li>Foco nos pares EUR/USD, GBP/USD e USD/JPY</li>
+                            <li>Alta taxa de acerto (média de 72% em backtests)</li>
+                            <li>Gerenciamento de risco adaptativo baseado na volatilidade</li>
+                            <li>Filtro de notícias econômicas integrado</li>
+                            <li>Configuração automática de stop loss e take profit</li>
+                            <li>Compatível com MetaTrader 4 e MetaTrader 5</li>
+                        </ul>
+                        
+                        <h3 class="text-xl font-semibold text-gray-800 mt-6 mb-3">Como Funciona</h3>
+                        <p class="text-gray-700 mb-4">O Scalper Pro EA utiliza uma combinação de indicadores técnicos avançados para identificar pequenas variações de preço que ocorrem frequentemente em mercados com alta liquidez. O algoritmo é especialmente eficaz durante as sessões de Londres e Nova York, quando a volatilidade e o volume são maiores.</p>
+                        
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 my-6">
+                            <div class="flex">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-info-circle text-blue-500 text-xl"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p class="text-sm text-blue-700">
+                                        <strong>Recomendação:</strong> Para melhores resultados, utilize o EA em contas ECN com spreads baixos e execução rápida. O desempenho pode variar de acordo com as condições da corretora.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/3">
+                    <div class="bg-gray-50 p-6 rounded-lg shadow-sm sticky top-24">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-4">Resumo do Produto</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500">Tipo de Estratégia</h4>
+                                <p class="text-gray-800">Scalping de Alta Frequência</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500">Mercados</h4>
+                                <p class="text-gray-800">Forex (Pares Principais)</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500">Timeframe</h4>
+                                <p class="text-gray-800">M1, M5, M15</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500">Plataforma</h4>
+                                <p class="text-gray-800">MetaTrader 4 & 5</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500">Capital Mínimo</h4>
+                                <p class="text-gray-800">Recomendado $2,000+</p>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-sm font-medium text-gray-500">Atualizações</h4>
+                                <p class="text-gray-800">1 ano incluído</p>
+                            </div>
+                            
+                            <div class="pt-4 border-t border-gray-200">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-700">Preço:</span>
+                                    <span class="text-blue-600 font-bold text-lg">R$ 999</span>
+                                </div>
+                                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Comprar Agora
+                                </button>
+                                <p class="text-xs text-gray-500 mt-2 text-center">Pagamento seguro via PagSeguro, PayPal ou PIX</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Performance Section -->
+    <section id="performance" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8">Desempenho do Scalper Pro EA</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <!-- Stat Card 1 -->
+                <div class="stat-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-chart-line text-green-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Retorno Anual</p>
+                            <p class="text-2xl font-bold text-gray-800">142.7%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stat Card 2 -->
+                <div class="stat-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-percentage text-blue-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Taxa de Acerto</p>
+                            <p class="text-2xl font-bold text-gray-800">71.8%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stat Card 3 -->
+                <div class="stat-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="bg-purple-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-exchange-alt text-purple-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Drawdown Máx.</p>
+                            <p class="text-2xl font-bold text-gray-800">12.4%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Stat Card 4 -->
+                <div class="stat-card bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+                    <div class="flex items-center">
+                        <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-coins text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Lucro Médio/Mês</p>
+                            <p class="text-2xl font-bold text-gray-800">9.3%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Equity Curve -->
+            <div class="bg-white p-6 rounded-lg shadow-sm mb-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800">Evolução do Capital (Backtest 2020-2023)</h3>
+                    <div class="flex space-x-2">
+                        <button class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded">1 Ano</button>
+                        <button class="px-3 py-1 text-sm bg-blue-600 text-white rounded">3 Anos</button>
+                        <button class="px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded">5 Anos</button>
+                    </div>
+                </div>
+                <div class="h-80">
+                    <canvas id="equityChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Monthly Performance -->
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">Desempenho Mensal (Últimos 12 meses)</h3>
+                <div class="h-80">
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Backtests Section -->
+    <section id="backtests" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8">Resultados de Backtests</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">EUR/USD (M5)</h3>
+                    <div class="h-64 mb-4">
+                        <canvas id="eurusdChart"></canvas>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500">Retorno Total</p>
+                            <p class="text-lg font-bold text-green-600">+217.4%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Drawdown</p>
+                            <p class="text-lg font-bold text-gray-800">14.2%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Taxa de Acerto</p>
+                            <p class="text-lg font-bold text-gray-800">73.1%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Operações</p>
+                            <p class="text-lg font-bold text-gray-800">1,284</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">GBP/USD (M5)</h3>
+                    <div class="h-64 mb-4">
+                        <canvas id="gbpusdChart"></canvas>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500">Retorno Total</p>
+                            <p class="text-lg font-bold text-green-600">+189.5%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Drawdown</p>
+                            <p class="text-lg font-bold text-gray-800">16.8%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Taxa de Acerto</p>
+                            <p class="text-lg font-bold text-gray-800">69.4%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Operações</p>
+                            <p class="text-lg font-bold text-gray-800">1,102</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">USD/JPY (M5)</h3>
+                    <div class="h-64 mb-4">
+                        <canvas id="usdjpyChart"></canvas>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-sm text-gray-500">Retorno Total</p>
+                            <p class="text-lg font-bold text-green-600">+156.2%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Drawdown</p>
+                            <p class="text-lg font-bold text-gray-800">11.7%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Taxa de Acerto</p>
+                            <p class="text-lg font-bold text-gray-800">75.3%</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-500">Operações</p>
+                            <p class="text-lg font-bold text-gray-800">978</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
+                <h3 class="text-xl font-semibold text-gray-800 mb-6">Relatório Detalhado de Backtests</h3>
+                
+                <div class="overflow-x-auto">
+                    <table class="backtest-table">
+                        <thead>
+                            <tr>
+                                <th>Par</th>
+                                <th>Período</th>
+                                <th>Retorno</th>
+                                <th>Drawdown</th>
+                                <th>Taxa Acerto</th>
+                                <th>Operações</th>
+                                <th>Profit Factor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>EUR/USD</td>
+                                <td>2020-2023</td>
+                                <td class="text-green-600 font-medium">+217.4%</td>
+                                <td>14.2%</td>
+                                <td>73.1%</td>
+                                <td>1,284</td>
+                                <td>2.34</td>
+                            </tr>
+                            <tr>
+                                <td>GBP/USD</td>
+                                <td>2020-2023</td>
+                                <td class="text-green-600 font-medium">+189.5%</td>
+                                <td>16.8%</td>
+                                <td>69.4%</td>
+                                <td>1,102</td>
+                                <td>2.18</td>
+                            </tr>
+                            <tr>
+                                <td>USD/JPY</td>
+                                <td>2020-2023</td>
+                                <td class="text-green-600 font-medium">+156.2%</td>
+                                <td>11.7%</td>
+                                <td>75.3%</td>
+                                <td>978</td>
+                                <td>2.41</td>
+                            </tr>
+                            <tr>
+                                <td>EUR/GBP</td>
+                                <td>2020-2023</td>
+                                <td class="text-green-600 font-medium">+132.7%</td>
+                                <td>18.3%</td>
+                                <td>68.9%</td>
+                                <td>845</td>
+                                <td>1.97</td>
+                            </tr>
+                            <tr>
+                                <td>AUD/USD</td>
+                                <td>2020-2023</td>
+                                <td class="text-green-600 font-medium">+121.5%</td>
+                                <td>19.6%</td>
+                                <td>67.2%</td>
+                                <td>792</td>
+                                <td>1.85</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Settings Section -->
+    <section id="settings" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8">Configurações Recomendadas</h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Parâmetros do EA</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Lote (Lot Size)</label>
+                            <p class="text-gray-600">0.01 para cada $1,000 de capital</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Stop Loss (pips)</label>
+                            <p class="text-gray-600">15-25 pips (ajuste automático baseado na volatilidade)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Take Profit (pips)</label>
+                            <p class="text-gray-600">8-12 pips (scalping rápido)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Horário de Operação</label>
+                            <p class="text-gray-600">Sessão de Londres (08:00-17:00 GMT) e Nova York (13:00-22:00 GMT)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Filtro de Notícias</label>
+                            <p class="text-gray-600">Ativado (evita operar durante releases econômicos importantes)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-sm">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Requisitos do Sistema</h3>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Plataforma</label>
+                            <p class="text-gray-600">MetaTrader 4 ou MetaTrader 5 (versão estável mais recente)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">VPS Recomendado</label>
+                            <p class="text-gray-600">Sim (para operação 24/7 com latência mínima)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Corretora</label>
+                            <p class="text-gray-600">ECN com spreads baixos e execução rápida</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Capital Mínimo</label>
+                            <p class="text-gray-600">$2,000 (recomendado $5,000+ para melhor gerenciamento)</p>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Ativos</label>
+                            <p class="text-gray-600">Pares principais de Forex (EUR/USD, GBP/USD, USD/JPY recomendados)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-blue-50 border-l-4 border-blue-500 p-4">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-lightbulb text-blue-500 text-xl"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700">
+                            <strong>Dica:</strong> Recomendamos testar o EA em conta demo por pelo menos 2 semanas antes de usar em conta real. Todos nossos clientes recebem um manual detalhado com configurações avançadas e dicas de otimização.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8">Perguntas Frequentes</h2>
+            
+            <div class="space-y-4 max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="flex justify-between items-center w-full p-4 text-left focus:outline-none bg-gray-50 hover:bg-gray-100">
+                        <h3 class="font-medium text-gray-800">Qual é o drawdown máximo histórico do Scalper Pro EA?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Nos nossos backtests de 3 anos e na operação real com clientes, o drawdown máximo observado foi de 19.6% no par AUD/USD durante eventos de alta volatilidade. No entanto, a média de drawdown fica em torno de 12-14% na maioria dos pares.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="flex justify-between items-center w-full p-4 text-left focus:outline-none bg-gray-50 hover:bg-gray-100">
+                        <h3 class="font-medium text-gray-800">Preciso deixar meu computador ligado 24 horas?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Não é necessário. Recomendamos fortemente o uso de um VPS (Servidor Virtual Privado) que mantém o MetaTrader e o EA rodando continuamente sem depender do seu computador. Oferecemos um guia completo de configuração de VPS para nossos clientes.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="flex justify-between items-center w-full p-4 text-left focus:outline-none bg-gray-50 hover:bg-gray-100">
+                        <h3 class="font-medium text-gray-800">O EA funciona em corretoras com hedge?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Sim, o Scalper Pro EA foi desenvolvido para funcionar tanto em corretoras que permitem hedge quanto nas que usam o sistema netting. No entanto, o desempenho pode variar ligeiramente dependendo do tipo de execução e das condições oferecidas pela corretora.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="flex justify-between items-center w-full p-4 text-left focus:outline-none bg-gray-50 hover:bg-gray-100">
+                        <h3 class="font-medium text-gray-800">Há garantia de devolução do dinheiro?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Oferecemos 7 dias de teste gratuito para você avaliar o EA em sua conta demo. Caso não esteja satisfeito dentro deste período, devolvemos 100% do seu dinheiro sem questionamentos. Após este período, não oferecemos reembolso devido à natureza digital do produto.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="border border-gray-200 rounded-lg overflow-hidden">
+                    <button class="flex justify-between items-center w-full p-4 text-left focus:outline-none bg-gray-50 hover:bg-gray-100">
+                        <h3 class="font-medium text-gray-800">Quantas contas posso usar com uma única licença?</h3>
+                        <i class="fas fa-chevron-down text-blue-600"></i>
+                    </button>
+                    <div class="p-4 border-t border-gray-200 hidden">
+                        <p class="text-gray-600">Cada licença do Scalper Pro EA pode ser usada em até 3 contas de trading simultaneamente, desde que sejam todas da mesma pessoa física ou jurídica. Para uso em mais contas ou para revenda, é necessário adquirir licenças adicionais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Pronto para automatizar seus investimentos?</h2>
+            <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Adquira agora o Scalper Pro EA e comece a operar com uma das estratégias mais consistentes do mercado.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="bg-white text-blue-800 px-8 py-3 rounded-lg font-semibold hover:bg-blue-100 transition duration-300 flex items-center justify-center">
+                    <i class="fas fa-shopping-cart mr-2"></i> Comprar Agora
+                </a>
+                <a href="#contact" class="border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-800 transition duration-300">Fale conosco</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-robot text-2xl mr-2 text-blue-400"></i>
+                        <span class="text-xl font-bold">Quantum<span class="text-blue-400">EAs</span></span>
+                    </div>
+                    <p class="text-gray-400">Expert Advisors de alta performance para o mercado financeiro. Operação automatizada com tecnologia de ponta.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Nossos EAs</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Scalper Pro</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Trend Master</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Gold Hunter</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Index Wizard</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Crypto Bot</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Úteis</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Tutoriais</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Termos de Uso</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Perguntas Frequentes</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Newsletter</h4>
+                    <p class="text-gray-400 mb-4">Inscreva-se para receber novidades e dicas sobre trading automatizado.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Seu email" class="px-4 py-2 rounded-l-lg focus:outline-none text-gray-900 w-full">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg transition"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 QuantumEAs. Todos os direitos reservados.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Equity Chart
+            const equityCtx = document.getElementById('equityChart').getContext('2d');
+            const equityChart = new Chart(equityCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan/20', 'Jul/20', 'Jan/21', 'Jul/21', 'Jan/22', 'Jul/22', 'Jan/23'],
+                    datasets: [{
+                        label: 'Saldo da Conta ($)',
+                        data: [10000, 12500, 16500, 19500, 22000, 18500, 24200],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Monthly Performance Chart
+            const monthlyCtx = document.getElementById('monthlyChart').getContext('2d');
+            const monthlyChart = new Chart(monthlyCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                    datasets: [{
+                        label: 'Retorno Mensal (%)',
+                        data: [8.2, 6.5, 9.1, 7.8, 10.4, 5.3, 11.2, 8.7, 9.5, 7.1, 10.8, 12.3],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(59, 130, 246, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(239, 68, 68, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(59, 130, 246, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return value + '%';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // EUR/USD Chart
+            const eurusdCtx = document.getElementById('eurusdChart').getContext('2d');
+            const eurusdChart = new Chart(eurusdCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'EUR/USD',
+                        data: [10000, 15800, 24200, 31700],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // GBP/USD Chart
+            const gbpusdCtx = document.getElementById('gbpusdChart').getContext('2d');
+            const gbpusdChart = new Chart(gbpusdCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'GBP/USD',
+                        data: [10000, 14600, 22500, 28900],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            // USD/JPY Chart
+            const usdjpyCtx = document.getElementById('usdjpyChart').getContext('2d');
+            const usdjpyChart = new Chart(usdjpyCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'USD/JPY',
+                        data: [10000, 13200, 19800, 25600],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.05)',
+                        borderWidth: 2,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        });
+
+        // FAQ Accordion
+        document.querySelectorAll('#faq button').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement.parentElement;
+                const content = faqItem.querySelector('div');
+                const icon = button.querySelector('i');
+                
+                content.classList.toggle('hidden');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        });
+
+        // Tab Navigation
+        document.querySelectorAll('.tab-button').forEach(tab => {
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all tabs
+                document.querySelectorAll('.tab-button').forEach(t => {
+                    t.classList.remove('active');
+                });
+                
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Show corresponding section
+                const target = this.getAttribute('href');
+                document.querySelectorAll('section[id]').forEach(section => {
+                    if (section.id === target.substring(1)) {
+                        section.classList.remove('hidden');
+                    } else if (section.id !== 'overview') {
+                        section.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

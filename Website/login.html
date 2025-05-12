@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EA Trading - Área do Cliente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .chart-container {
+            height: 400px;
+        }
+        .filter-dropdown {
+            transition: all 0.3s ease;
+        }
+        .filter-dropdown:hover {
+            background-color: #f3f4f6;
+        }
+        .login-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .sidebar {
+            transition: all 0.3s ease;
+        }
+        .sidebar-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation with Client Area Button -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="text-2xl font-bold">EA Trading</div>
+                    <div class="hidden md:flex space-x-6">
+                        <a href="#" class="hover:text-blue-300 transition">Home</a>
+                        <a href="#all-eas" class="hover:text-blue-300 transition">Nossos EAs</a>
+                        <a href="#" class="hover:text-blue-300 transition">Sobre</a>
+                        <a href="#" class="hover:text-blue-300 transition">Contato</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Client Area Button -->
+                    <a href="#client-area" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition flex items-center space-x-2">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Área do Cliente</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Section -->
+    <section id="login" class="py-20 gradient-bg">
+        <div class="container mx-auto px-6">
+            <div class="max-w-md mx-auto login-container rounded-xl p-8 shadow-2xl">
+                <h2 class="text-3xl font-bold text-white mb-6 text-center">Acesse sua conta</h2>
+                <form>
+                    <div class="mb-4">
+                        <label class="block text-white text-sm font-bold mb-2" for="email">
+                            Email
+                        </label>
+                        <input class="w-full px-3 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" type="email" placeholder="seu@email.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-white text-sm font-bold mb-2" for="password">
+                            Senha
+                        </label>
+                        <input class="w-full px-3 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="password" type="password" placeholder="********">
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline w-full transition" type="button">
+                            Entrar
+                        </button>
+                    </div>
+                    <div class="text-center">
+                        <a class="inline-block align-baseline font-bold text-sm text-blue-300 hover:text-blue-200" href="#">
+                            Esqueceu a senha?
+                        </a>
+                    </div>
+                    <div class="mt-6 border-t border-gray-600 pt-4">
+                        <p class="text-gray-300 text-center">Acesso administrativo? <a href="#admin-login" class="text-blue-300 hover:text-blue-200 font-medium">Clique aqui</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Dashboard -->
+    <section id="client-area" class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row">
+                <!-- Sidebar -->
+                <div class="w-full md:w-64 bg-white rounded-lg shadow-md p-4 mb-6 md:mb-0 md:mr-6">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white text-xl font-bold">JS</div>
+                        <div>
+                            <h3 class="font-bold">João Silva</h3>
+                            <p class="text-sm text-gray-600">Plano Premium</p>
+                        </div>
+                    </div>
+                    <nav>
+                        <ul class="space-y-2">
+                            <li><a href="#dashboard" class="block px-4 py-2 rounded-lg sidebar-item bg-blue-100 text-blue-700"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
+                            <li><a href="#subscriptions" class="block px-4 py-2 rounded-lg sidebar-item hover:bg-gray-100"><i class="fas fa-sync-alt mr-2"></i>Minhas Assinaturas</a></li>
+                            <li><a href="#downloads" class="block px-4 py-2 rounded-lg sidebar-item hover:bg-gray-100"><i class="fas fa-download mr-2"></i>Downloads</a></li>
+                            <li><a href="#settings" class="block px-4 py-2 rounded-lg sidebar-item hover:bg-gray-100"><i class="fas fa-cog mr-2"></i>Configurações</a></li>
+                            <li><a href="#logout" class="block px-4 py-2 rounded-lg sidebar-item hover:bg-gray-100"><i class="fas fa-sign-out-alt mr-2"></i>Sair</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <!-- Main Content -->
+                <div class="flex-1">
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h2 class="text-2xl font-bold mb-6">Minhas Assinaturas</h2>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white">
+                                <thead>
+                                    <tr class="bg-gray-100">
+                                        <th class="py-3 px-4 text-left">EA</th>
+                                        <th class="py-3 px-4 text-left">Status</th>
+                                        <th class="py-3 px-4 text-left">Vencimento</th>
+                                        <th class="py-3 px-4 text-left">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-4 px-4">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                                    <i class="fas fa-robot text-blue-600"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium">WIN Scalper Pro</p>
+                                                    <p class="text-sm text-gray-600">WINJ23</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-4">
+                                            <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Ativo</span>
+                                        </td>
+                                        <td class="py-4 px-4">15/08/2023</td>
+                                        <td class="py-4 px-4">
+                                            <div class="flex space-x-2">
+                                                <button class="px-3 py-1 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition"><i class="fas fa-sync-alt mr-1"></i> Renovar</button>
+                                                <button class="px-3 py-1 bg-gray-200 text-gray-800 rounded-md text-sm hover:bg-gray-300 transition"><i class="fas fa-download mr-1"></i> Config</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="border-b border-gray-200">
+                                        <td class="py-4 px-4">
+                                            <div class="flex items-center">
+                                                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                                                    <i class="fas fa-robot text-blue-600"></i>
+                                                </div>
+                                                <div>
+                                                    <p class="font-medium">WDO Trend Master</p>
+                                                    <p class="text-sm text-gray-600">WDOJ23</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="py-4 px-4">
+                                            <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Expira em 3 dias</span>
+                                        </td>
+                                        <td class="py-4 px-4">20/07/2023</td>
+                                        <td class="py-4 px-4">
+                                            <div class="flex space-x-2">
+                                                <button class="px-3 py-1 bg-blue-600 text-white rounded-md text-sm hover:bg-blue-700 transition"><i class="fas fa-sync-alt mr-1"></i> Renovar</button>
+                                                <button class="px-3 py-1 bg-gray-200 text-gray-800 rounded-md text-sm hover:bg-gray-300 transition"><i class="fas fa-download mr-1"></i> Config</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h2 class="text-2xl font-bold mb-6">Estatísticas de Desempenho</h2>
+                        
+                        <div class="mb-6">
+                            <div class="flex flex-wrap items-center justify-between mb-4">
+                                <h3 class="text-lg font-medium">WIN Scalper Pro</h3>
+                                <div class="flex space-x-2">
+                                    <select class="filter-dropdown px-3 py-1 bg-gray-100 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option>Últimos 30 dias</option>
+                                        <option>Últimos 90 dias</option>
+                                        <option>Últimos 6 meses</option>
+                                        <option>Último ano</option>
+                                        <option>Todos os dados</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                                <!-- Stat Card 1 -->
+                                <div class="stat-card bg-white p-4 rounded-lg shadow border border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-600">Retorno</p>
+                                            <p class="text-2xl font-bold">+24.7%</p>
+                                        </div>
+                                        <div class="p-2 rounded-full bg-green-100 text-green-600">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="text-xs text-gray-500">Retorno acumulado no período</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Stat Card 2 -->
+                                <div class="stat-card bg-white p-4 rounded-lg shadow border border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-600">Taxa de Acerto</p>
+                                            <p class="text-2xl font-bold">78.3%</p>
+                                        </div>
+                                        <div class="p-2 rounded-full bg-blue-100 text-blue-600">
+                                            <i class="fas fa-bullseye"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="text-xs text-gray-500">Operações lucrativas</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Stat Card 3 -->
+                                <div class="stat-card bg-white p-4 rounded-lg shadow border border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-600">Drawdown Máx.</p>
+                                            <p class="text-2xl font-bold">-8.2%</p>
+                                        </div>
+                                        <div class="p-2 rounded-full bg-red-100 text-red-600">
+                                            <i class="fas fa-exclamation-triangle"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="text-xs text-gray-500">Maior perda acumulada</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Stat Card 4 -->
+                                <div class="stat-card bg-white p-4 rounded-lg shadow border border-gray-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <p class="text-sm text-gray-600">Lucro Médio/Mês</p>
+                                            <p class="text-2xl font-bold">+5.8%</p>
+                                        </div>
+                                        <div class="p-2 rounded-full bg-green-100 text-green-600">
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <p class="text-xs text-gray-500">Média mensal de retorno</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Advanced Stats -->
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Estatísticas Avançadas</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium">Fator de Lucro: <span class="text-blue-600">2.8</span></p>
+                                        <p class="text-xs text-gray-600 mt-1">Relação entre lucro total e perda total</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium">Retorno Esperado (Payoff): <span class="text-blue-600">1.5</span></p>
+                                        <p class="text-xs text-gray-600 mt-1">Lucro médio por operação</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium">Fator de Recuperação: <span class="text-blue-600">3.2</span></p>
+                                        <p class="text-xs text-gray-600 mt-1">Capacidade de recuperar perdas</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium">Índice de Sharpe: <span class="text-blue-600">1.9</span></p>
+                                        <p class="text-xs text-gray-600 mt-1">Risco/retorno ajustado (quanto maior melhor)</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium">AHPR: <span class="text-blue-600">1.012</span></p>
+                                        <p class="text-xs text-gray-600 mt-1">Retorno aritmético médio por operação</p>
+                                    </div>
+                                    <div class="bg-gray-50 p-3 rounded-lg">
+                                        <p class="text-sm font-medium">GHPR: <span class="text-blue-600">1.009</span></p>
+                                        <p class="text-xs text-gray-600 mt-1">Retorno geométrico médio por operação</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Trade Stats -->
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Estatísticas de Negociação</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
+                                        <p class="text-sm font-medium mb-2">Total de Negociações: <span class="text-blue-600">47</span></p>
+                                        <p class="text-xs text-gray-600">Este EA opera com baixa frequência (aprox. 2-3 operações por semana), o que reduz a exposição ao mercado e o risco de over-trading.</p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
+                                        <p class="text-sm font-medium mb-2">Razão Média Lucro/Perda: <span class="text-blue-600">2.5:1</span></p>
+                                        <p class="text-xs text-gray-600">Com esta razão, o EA precisa acertar apenas 29% das operações para ficar no zero a zero. Na prática, acerta 78.3%, demonstrando robustez.</p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
+                                        <p class="text-sm font-medium mb-2">Negociações com Lucro: <span class="text-blue-600">78.3%</span></p>
+                                        <p class="text-xs text-gray-600">A taxa de acerto está significativamente acima do mínimo necessário (29%), proporcionando um fator de segurança elevado.</p>
+                                    </div>
+                                    <div class="bg-white p-4 rounded-lg shadow border border-gray-200">
+                                        <p class="text-sm font-medium mb-2">Negociações com Perda: <span class="text-blue-600">21.7%</span></p>
+                                        <p class="text-xs text-gray-600">A baixa porcentagem de perdas, combinada com a alta razão lucro/perda, cria um perfil de risco/recompensa muito favorável.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Charts -->
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Evolução de Capital</h4>
+                                <div class="chart-container bg-white p-4 rounded-lg shadow border border-gray-200">
+                                    <!-- Chart would be rendered here with JavaScript -->
+                                    <div class="flex items-center justify-center h-full bg-gray-100 rounded">
+                                        <p class="text-gray-500">Gráfico de evolução de capital seria renderizado aqui</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="font-medium mb-3">Desempenho Mensal</h4>
+                                <div class="chart-container bg-white p-4 rounded-lg shadow border border-gray-200">
+                                    <!-- Chart would be rendered here with JavaScript -->
+                                    <div class="flex items-center justify-center h-full bg-gray-100 rounded">
+                                        <p class="text-gray-500">Gráfico de desempenho mensal seria renderizado aqui</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- All EAs Section -->
+    <section id="all-eas" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12">Nossos EAs Disponíveis</h2>
+            
+            <div class="mb-6 flex justify-between items-center">
+                <div class="w-full md:w-64">
+                    <select class="w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+                        <option value="">Filtrar por ativo</option>
+                        <option value="WIN">WIN (Índice)</option>
+                        <option value="WDO">WDO (Dólar)</option>
+                        <option value="B3">Todos B3</option>
+                        <option value="forex">Forex</option>
+                        <option value="metals">Metais</option>
+                    </select>
+                </div>
+                <div>
+                    <p class="text-sm text-gray-600">Mostrando 6 de 6 EAs</p>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- EA Card 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="inline-block px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium mb-2">Índices</span>
+                                <h3 class="text-xl font-bold">WIN Scalper Pro</h3>
+                            </div>
+                            <div class="text-2xl text-blue-600">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">EA de scalping para o WIN com alta taxa de acerto e gerenciamento de risco rigoroso.</p>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Retorno médio/mês</p>
+                                <p class="text-lg font-bold text-green-600">+5.8%</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Taxa de acerto</p>
+                                <p class="text-lg font-bold text-blue-600">78.3%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Risco</span>
+                                <span>Moderado</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-yellow-500 h-2 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-500">Assinatura mensal</p>
+                                <p class="text-xl font-bold">R$ 297/mês</p>
+                            </div>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Assinar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EA Card 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="inline-block px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium mb-2">Dólar</span>
+                                <h3 class="text-xl font-bold">WDO Trend Master</h3>
+                            </div>
+                            <div class="text-2xl text-green-600">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Operador de tendências para WDO com filtros de volatilidade e identificação de rompimentos.</p>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Retorno médio/mês</p>
+                                <p class="text-lg font-bold text-green-600">+7.2%</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Taxa de acerto</p>
+                                <p class="text-lg font-bold text-blue-600">65.5%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Risco</span>
+                                <span>Moderado/Alto</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-orange-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-500">Assinatura mensal</p>
+                                <p class="text-xl font-bold">R$ 347/mês</p>
+                            </div>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Assinar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- EA Card 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition">
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="inline-block px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs font-medium mb-2">Índices</span>
+                                <h3 class="text-xl font-bold">WIN Swing Trader</h3>
+                            </div>
+                            <div class="text-2xl text-blue-600">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-4">Estratégia de swing trading para o WIN com operações de 1-3 dias e alvos amplos.</p>
+                        
+                        <div class="flex items-center justify-between mb-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Retorno médio/mês</p>
+                                <p class="text-lg font-bold text-green-600">+9.1%</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Taxa de acerto</p>
+                                <p class="text-lg font-bold text-blue-600">58.7%</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="flex justify-between text-sm mb-1">
+                                <span>Risco</span>
+                                <span>Alto</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-red-500 h-2 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <p class="text-sm text-gray-500">Assinatura mensal</p>
+                                <p class="text-xl font-bold">R$ 397/mês</p>
+                            </div>
+                            <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Assinar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Login -->
+    <section id="admin-login" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="max-w-md mx-auto login-container rounded-xl p-8 shadow-2xl">
+                <h2 class="text-3xl font-bold text-white mb-6 text-center">Acesso Administrativo</h2>
+                <form>
+                    <div class="mb-4">
+                        <label class="block text-white text-sm font-bold mb-2" for="admin-email">
+                            Email
+                        </label>
+                        <input class="w-full px-3 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="admin-email" type="email" placeholder="admin@email.com">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-white text-sm font-bold mb-2" for="admin-password">
+                            Senha
+                        </label>
+                        <input class="w-full px-3 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500" id="admin-password" type="password" placeholder="********">
+                    </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline w-full transition" type="button">
+                            Acessar Painel Admin
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section id="admin-dashboard" class="py-12 bg-gray-100 hidden">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-8">
+                <h2 class="text-2xl font-bold">Painel Administrativo</h2>
+                <div class="flex space-x-4">
+                    <button class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition">Exportar Dados</button>
+                    <button class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 transition">Sair</button>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Gerenciar Clientes</h3>
+                
+                <div class="mb-4 flex justify-between">
+                    <div class="w-64">
+                        <input type="text" placeholder="Buscar cliente..." class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <button class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">Novo Cliente</button>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-3 px-4 text-left">Cliente</th>
+                                <th class="py-3 px-4 text-left">Email</th>
+                                <th class="py-3 px-4 text-left">Assinaturas Ativas</th>
+                                <th class="py-3 px-4 text-left">Status</th>
+                                <th class="py-3 px-4 text-left">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4">João Silva</td>
+                                <td class="py-4 px-4">joao@email.com</td>
+                                <td class="py-4 px-4">2</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Ativo</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="flex space-x-2">
+                                        <button class="p-1 text-blue-600 hover:text-blue-800"><i class="fas fa-edit"></i></button>
+                                        <button class="p-1 text-red-600 hover:text-red-800"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4">Maria Souza</td>
+                                <td class="py-4 px-4">maria@email.com</td>
+                                <td class="py-4 px-4">1</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Pendente</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="flex space-x-2">
+                                        <button class="p-1 text-blue-600 hover:text-blue-800"><i class="fas fa-edit"></i></button>
+                                        <button class="p-1 text-red-600 hover:text-red-800"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-4">Gerenciar Assinaturas</h3>
+                
+                <div class="mb-4">
+                    <div class="flex space-x-4">
+                        <div class="w-48">
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Todos os status</option>
+                                <option>Ativas</option>
+                                <option>Expiradas</option>
+                                <option>Canceladas</option>
+                            </select>
+                        </div>
+                        <div class="w-48">
+                            <select class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option>Todos os EAs</option>
+                                <option>WIN Scalper Pro</option>
+                                <option>WDO Trend Master</option>
+                                <option>WIN Swing Trader</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="py-3 px-4 text-left">Cliente</th>
+                                <th class="py-3 px-4 text-left">EA</th>
+                                <th class="py-3 px-4 text-left">Início</th>
+                                <th class="py-3 px-4 text-left">Vencimento</th>
+                                <th class="py-3 px-4 text-left">Status</th>
+                                <th class="py-3 px-4 text-left">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4">João Silva</td>
+                                <td class="py-4 px-4">WIN Scalper Pro</td>
+                                <td class="py-4 px-4">15/06/2023</td>
+                                <td class="py-4 px-4">15/08/2023</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs font-medium">Ativa</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="flex space-x-2">
+                                        <button class="p-1 text-blue-600 hover:text-blue-800"><i class="fas fa-edit"></i></button>
+                                        <button class="p-1 text-red-600 hover:text-red-800"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-4 px-4">Maria Souza</td>
+                                <td class="py-4 px-4">WDO Trend Master</td>
+                                <td class="py-4 px-4">01/07/2023</td>
+                                <td class="py-4 px-4">01/08/2023</td>
+                                <td class="py-4 px-4">
+                                    <span class="px-2 py-1 bg-yellow-100 text-yellow-800 rounded-full text-xs font-medium">Pendente</span>
+                                </td>
+                                <td class="py-4 px-4">
+                                    <div class="flex space-x-2">
+                                        <button class="p-1 text-blue-600 hover:text-blue-800"><i class="fas fa-edit"></i></button>
+                                        <button class="p-1 text-red-600 hover:text-red-800"><i class="fas fa-trash-alt"></i></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-4">EA Trading</h3>
+                    <p class="text-gray-300">Soluções automatizadas para o mercado financeiro</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="font-bold mb-4">Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Home</a></li>
+                            <li><a href="#all-eas" class="text-gray-300 hover:text-white transition">Nossos EAs</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Sobre</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Contato</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Suporte</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">FAQ</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Documentação</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Termos de Uso</a></li>
+                            <li><a href="#" class="text-gray-300 hover:text-white transition">Política de Privacidade</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-4">Contato</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center"><i class="fas fa-envelope mr-2"></i> contato@eatrading.com</li>
+                            <li class="flex items-center"><i class="fas fa-phone mr-2"></i> (11) 99999-9999</li>
+                            <li class="flex items-center"><i class="fas fa-map-marker-alt mr-2"></i> São Paulo, Brasil</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 EA Trading. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple demonstration of filter functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // This would be replaced with actual chart rendering libraries like Chart.js in a real implementation
+            console.log('Page loaded - charts would be rendered here');
+            
+            // Toggle admin dashboard (for demo purposes)
+            const adminLoginBtn = document.querySelector('#admin-login button');
+            if(adminLoginBtn) {
+                adminLoginBtn.addEventListener('click', function() {
+                    document.getElementById('admin-dashboard').classList.remove('hidden');
+                    document.getElementById('admin-login').classList.add('hidden');
+                });
+            }
+            
+            // Filter functionality for EA details
+            const timeFilter = document.querySelector('.filter-dropdown');
+            if(timeFilter) {
+                timeFilter.addEventListener('change', function() {
+                    alert('Filtro alterado para: ' + this.value + '\n\nEsta ação atualizaria os dados exibidos no painel em uma implementação real.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
