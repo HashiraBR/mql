@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuantumFX Pro | Detalhes do Expert Advisor | AutoTradeX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #0A1F44;
+            background-color: #F8F9FA;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .bg-primary {
+            background-color: #0A1F44;
+        }
+        .text-primary {
+            color: #0A1F44;
+        }
+        .bg-accent {
+            background-color: #00D084;
+        }
+        .text-accent {
+            color: #00D084;
+        }
+        .bg-neutral {
+            background-color: #E5E5E5;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0A1F44 0%, #1A3A8F 100%);
+        }
+        .chart-container {
+            height: 300px;
+            position: relative;
+        }
+        .performance-card {
+            transition: all 0.3s ease;
+        }
+        .performance-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="bg-primary text-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="#" class="flex items-center">
+                        <i class="fas fa-robot text-2xl text-accent mr-2"></i>
+                        <span class="text-xl font-bold">AutoTradeX</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#" class="hover:text-accent transition-all">Início</a>
+                    <a href="#" class="hover:text-accent transition-all">Produtos</a>
+                    <a href="#" class="hover:text-accent transition-all">Resultados</a>
+                    <a href="#" class="hover:text-accent transition-all">Sobre Nós</a>
+                    <a href="#" class="hover:text-accent transition-all">Contato</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="bg-accent hover:bg-green-600 text-white px-4 py-2 rounded-md font-medium transition-all">
+                        Área do Cliente <i class="fas fa-lock ml-1"></i>
+                    </a>
+                    <button class="md:hidden text-white focus:outline-none" id="mobile-menu-button">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Hero Section -->
+    <section class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-2/3 mb-8 md:mb-0">
+                    <div class="flex items-center mb-4">
+                        <span class="bg-accent text-white text-sm px-3 py-1 rounded-full mr-3">FOREX</span>
+                        <span class="text-sm">Expert Advisor</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4">QuantumFX Pro</h1>
+                    <p class="text-xl mb-6">Algoritmo especializado em pares de moedas principais com estratégia de momentum e reversão.</p>
+                    <div class="flex flex-wrap gap-4 mb-6">
+                        <div class="flex items-center bg-white bg-opacity-10 px-4 py-2 rounded-full">
+                            <i class="fas fa-chart-line text-accent mr-2"></i>
+                            <span>Retorno anual: <strong class="text-accent">+45%</strong></span>
+                        </div>
+                        <div class="flex items-center bg-white bg-opacity-10 px-4 py-2 rounded-full">
+                            <i class="fas fa-shield-alt text-accent mr-2"></i>
+                            <span>Risco: <strong>Moderado</strong></span>
+                        </div>
+                        <div class="flex items-center bg-white bg-opacity-10 px-4 py-2 rounded-full">
+                            <i class="fas fa-clock text-accent mr-2"></i>
+                            <span>Operação: <strong>24/5</strong></span>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#pricing" class="bg-accent hover:bg-green-600 text-white px-6 py-3 rounded-md font-medium text-center transition-all">
+                            Adquirir Agora <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                        <a href="#demo" class="bg-white hover:bg-gray-100 text-primary px-6 py-3 rounded-md font-medium text-center transition-all">
+                            Solicitar Demonstração <i class="fas fa-play-circle ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/3 flex justify-center">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/400x300/0A1F44/00D084?text=QuantumFX+Pro" alt="QuantumFX Pro" class="rounded-lg shadow-2xl border-4 border-accent">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Navigation -->
+    <div class="bg-white shadow-sm sticky top-16 z-40">
+        <div class="container mx-auto px-4">
+            <nav class="flex overflow-x-auto py-4 hide-scrollbar">
+                <div class="flex space-x-1">
+                    <a href="#overview" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Visão Geral</a>
+                    <a href="#strategy" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Estratégia</a>
+                    <a href="#performance" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Performance</a>
+                    <a href="#backtest" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Backtest</a>
+                    <a href="#settings" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Configurações</a>
+                    <a href="#requirements" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Requisitos</a>
+                    <a href="#pricing" class="px-4 py-2 text-sm font-medium rounded-md hover:bg-gray-100 transition-all">Licenciamento</a>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Overview Section -->
+        <section id="overview" class="mb-16">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="md:col-span-2">
+                    <h2 class="text-3xl font-bold mb-6">Resumo do Produto</h2>
+                    <p class="text-lg mb-6">O QuantumFX Pro é nosso Expert Advisor mais vendido, especializado em operar os principais pares de moedas (EUR/USD, GBP/USD, USD/JPY) com uma estratégia única que combina momentum e reversão.</p>
+                    <p class="mb-6">Desenvolvido após 3 anos de pesquisa e otimização, esse EA identifica padrões de alta probabilidade com uma taxa de acerto consistente acima de 75%, enquanto mantém um drawdown máximo abaixo de 15%.</p>
+                    
+                    <h3 class="text-2xl font-bold mb-4 mt-8">Principais Características</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start">
+                            <div class="bg-accent bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-brain text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Inteligência de Mercado</h4>
+                                <p class="text-gray-600">Analisa múltiplos timeframes simultaneamente para identificar as melhores oportunidades.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-accent bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-robot text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Automação Completa</h4>
+                                <p class="text-gray-600">Opera 24/5 sem necessidade de intervenção manual.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-accent bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Gestão de Risco</h4>
+                                <p class="text-gray-600">Stop loss dinâmico e tamanho de posição ajustável ao saldo da conta.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-accent bg-opacity-10 p-3 rounded-full mr-4">
+                                <i class="fas fa-sync-alt text-accent"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold mb-2">Atualizações Constantes</h4>
+                                <p class="text-gray-600">Melhorias contínuas baseadas nas condições de mercado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm sticky top-32 h-fit">
+                    <h3 class="text-xl font-bold mb-4">Especificações Técnicas</h3>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Estratégia:</span>
+                            <span>Momentum + Reversão</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Pares recomendados:</span>
+                            <span>EUR/USD, GBP/USD, USD/JPY</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Timeframe:</span>
+                            <span>M15, H1</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Versão:</span>
+                            <span>MT4 & MT5</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Lançamento:</span>
+                            <span>Junho 2021</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Última atualização:</span>
+                            <span>Maio 2023</span>
+                        </li>
+                    </ul>
+                    <a href="#pricing" class="block w-full bg-accent hover:bg-green-600 text-white text-center py-3 px-4 rounded-md font-medium transition-all">
+                        Adquirir QuantumFX Pro
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Strategy Section -->
+        <section id="strategy" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Descrição Técnica e Estratégica</h2>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8">
+                        <h3 class="text-2xl font-bold mb-4">Como Funciona</h3>
+                        <p class="mb-4">O QuantumFX Pro utiliza uma abordagem multifatorial para identificar oportunidades de trading:</p>
+                        <ol class="list-decimal pl-6 space-y-3 mb-6">
+                            <li><strong>Identificação de Tendência:</strong> Analisa múltiplos timeframes para determinar a direção predominante do mercado.</li>
+                            <li><strong>Pontos de Reversão:</strong> Usa indicadores personalizados para detectar potenciais reversões dentro da tendência principal.</li>
+                            <li><strong>Confirmação de Volume:</strong> Verifica o volume e a liquidez para confirmar os sinais.</li>
+                            <li><strong>Gestão de Risco:</strong> Calcula o tamanho ideal da posição e define stop loss dinâmico.</li>
+                        </ol>
+                        <p>O EA opera principalmente durante as sessões de Londres e Nova York quando a liquidez é mais alta e os spreads são mais baixos.</p>
+                    </div>
+                    <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8">
+                        <img src="https://via.placeholder.com/500x300/E5E5E5/0A1F44?text=Estrategia+QuantumFX" alt="Estratégia QuantumFX" class="rounded-lg">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Indicadores Utilizados</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Média Móvel Ponderada por Volume (VWAP)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Índice de Força Relativa (RSI) personalizado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Bandas de Bollinger adaptativas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Perfil de Volume por preço</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Oscilador de Momentum personalizado</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Filtros de Entrada</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Filtro de horário (opera apenas em períodos de alta liquidez)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Filtro de notícias (evita operar próximo a releases econômicos)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Filtro de spread (só opera com spreads abaixo de 2 pips)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Filtro de volatilidade (ajusta o tamanho do stop conforme a volatilidade)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Section -->
+        <section id="performance" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Desempenho Detalhado</h2>
+            <p class="text-lg mb-8">Resultados reais em conta ao vivo desde janeiro de 2022. Dados atualizados em tempo real.</p>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-sm performance-card">
+                    <div class="text-3xl font-bold text-accent mb-2">+45%</div>
+                    <div class="text-gray-600">Retorno Anual</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm performance-card">
+                    <div class="text-3xl font-bold text-accent mb-2">78%</div>
+                    <div class="text-gray-600">Taxa de Acerto</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm performance-card">
+                    <div class="text-3xl font-bold mb-2">12%</div>
+                    <div class="text-gray-600">Drawdown Máximo</div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-sm performance-card">
+                    <div class="text-3xl font-bold text-accent mb-2">1.8%</div>
+                    <div class="text-gray-600">Lucro Médio por Operação</div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-bold">Evolução do Capital</h3>
+                </div>
+                <div class="p-6 chart-container">
+                    <img src="https://via.placeholder.com/1200x400/E5E5E5/0A1F44?text=Grafico+de+Evolucao+do+Capital" alt="Evolução do Capital" class="w-full h-full object-cover rounded">
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-bold">Desempenho por Par</h3>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between mb-3">
+                            <span>EUR/USD</span>
+                            <span class="font-bold text-accent">+23.5%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                            <div class="bg-accent h-2 rounded-full" style="width: 52%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between mb-3">
+                            <span>GBP/USD</span>
+                            <span class="font-bold text-accent">+15.2%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-4">
+                            <div class="bg-accent h-2 rounded-full" style="width: 34%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between mb-3">
+                            <span>USD/JPY</span>
+                            <span class="font-bold text-accent">+6.3%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-accent h-2 rounded-full" style="width: 14%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-6 border-b border-gray-200">
+                        <h3 class="text-xl font-bold">Desempenho Mensal (últimos 12 meses)</h3>
+                    </div>
+                    <div class="p-6 chart-container">
+                        <img src="https://via.placeholder.com/600x300/E5E5E5/0A1F44?text=Grafico+Mensal" alt="Desempenho Mensal" class="w-full h-full object-cover rounded">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-bold">Estatísticas de Operações</h3>
+                </div>
+                <div class="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-200">
+                    <div class="p-6">
+                        <h4 class="font-bold mb-3">Distribuição por Resultado</h4>
+                        <div class="chart-container">
+                            <img src="https://via.placeholder.com/400x300/E5E5E5/0A1F44?text=Grafico+de+Resultados" alt="Distribuição por Resultado" class="w-full h-full object-cover rounded">
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-3">Duração Média das Operações</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Intraday (<1 dia)</span>
+                                    <span class="font-bold">68%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full" style="width: 68%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Swing (1-3 dias)</span>
+                                    <span class="font-bold">27%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full" style="width: 27%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Posicional (>3 dias)</span>
+                                    <span class="font-bold">5%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-accent h-2 rounded-full" style="width: 5%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="font-bold mb-3">Horário das Operações</h4>
+                        <div class="chart-container">
+                            <img src="https://via.placeholder.com/400x300/E5E5E5/0A1F44?text=Grafico+de+Horarios" alt="Horário das Operações" class="w-full h-full object-cover rounded">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Backtest Section -->
+        <section id="backtest" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Resultados de Backtest</h2>
+            <p class="text-lg mb-8">Testes realizados com dados históricos de 10 anos (2013-2023) em diferentes condições de mercado.</p>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                <div class="p-6 border-b border-gray-200">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <h3 class="text-xl font-bold mb-2 md:mb-0">Performance em Diferentes Períodos</h3>
+                        <div class="flex space-x-4">
+                            <button class="px-4 py-2 bg-accent text-white rounded-md text-sm font-medium">EUR/USD</button>
+                            <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-sm font-medium">GBP/USD</button>
+                            <button class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-md text-sm font-medium">USD/JPY</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6 chart-container">
+                    <img src="https://via.placeholder.com/1200x400/E5E5E5/0A1F44?text=Grafico+de+Backtest" alt="Resultados de Backtest" class="w-full h-full object-cover rounded">
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Parâmetros do Backtest</h3>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Período:</span>
+                            <span>01/2013 - 06/2023</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Modelagem:</span>
+                            <span>Every tick (melhor aproximação)</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Depósito inicial:</span>
+                            <span>$10,000</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Alavancagem:</span>
+                            <span>1:30</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Spread:</span>
+                            <span>Variável (média histórica)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Resumo do Backtest</h3>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Retorno total:</span>
+                            <span class="font-bold text-accent">+427%</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Drawdown máximo:</span>
+                            <span>14.2%</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Taxa de acerto:</span>
+                            <span>76.5%</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Fator de lucro:</span>
+                            <span>2.8</span>
+                        </li>
+                        <li class="flex justify-between py-2 border-b border-gray-200">
+                            <span class="font-medium">Expectativa matemática:</span>
+                            <span class="font-bold text-accent">+1.2% por operação</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Configurações Recomendadas</h2>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-bold">Parâmetros Principais</h3>
+                </div>
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Parâmetro</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor Recomendado</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descrição</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">RiskPerTrade</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1-2%</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Porcentagem do capital arriscada por operação</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">TakeProfit</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dinâmico</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Calculado com base na volatilidade atual</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">StopLoss</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Dinâmico</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Ajustado conforme a volatilidade e estrutura do mercado</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">MaxSpread</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2 pips</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Spread máximo para entrada em novas operações</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">TradingHours</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">08:00-17:00 GMT</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Horário recomendado para operações</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">NewsFilter</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Ativado</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Evita operar próximo a releases econômicos importantes</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Arquivo de Configuração (.set)</h3>
+                    <p class="mb-4">Para facilitar a configuração, disponibilizamos um arquivo .set pré-configurado com os parâmetros recomendados.</p>
+                    <div class="flex items-center">
+                        <i class="fas fa-file-download text-2xl text-accent mr-3"></i>
+                        <div>
+                            <p class="font-medium">quantumfx_pro_recommended.set</p>
+                            <p class="text-sm text-gray-600">Última atualização: 15/05/2023</p>
+                        </div>
+                    </div>
+                    <button class="mt-4 bg-accent hover:bg-green-600 text-white py-2 px-4 rounded-md font-medium transition-all">
+                        Baixar Arquivo .set <i class="fas fa-download ml-2"></i>
+                    </button>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-4">Otimização Personalizada</h3>
+                    <p class="mb-4">Para traders avançados, recomendamos a otimização periódica dos parâmetros usando o testador de estratégia do MetaTrader.</p>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Otimize a cada 3-6 meses</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Use dados dos últimos 2-3 anos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Foque nos parâmetros de risco e horário</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="text-accent hover:text-green-600 font-medium inline-flex items-center">
+                        Guia de Otimização <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requirements Section -->
+        <section id="requirements" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Requisitos do Sistema</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 mb-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Requisitos Mínimos</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>MetaTrader 4 ou MetaTrader 5 instalado</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Windows 10 ou superior (64-bit)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Processador dual-core 2.0 GHz ou superior</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>4GB de RAM (8GB recomendado)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Conexão estável à internet (10Mbps+)</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-bold mb-4">Requisitos da Conta</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Conta real em corretora regulamentada</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Saldo mínimo recomendado: $1,000</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Alavancagem mínima: 1:30</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Spread médio abaixo de 2 pips</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Permissão para trading algorítmico</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6 border-b border-gray-200">
+                    <h3 class="text-xl font-bold">Corretoras Recomendadas</h3>
+                </div>
+                <div class="p-6">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Corretora</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo de Conta</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Spread EUR/USD</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">VPS Gratuito</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-building text-gray-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">IC Markets</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Raw Spread</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.1 pips</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sim</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-accent hover:text-green-600">Abrir Conta</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-building text-gray-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Pepperstone</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Razor</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.1 pips</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Sim</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-accent hover:text-green-600">Abrir Conta</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10 bg-gray-200 rounded-full flex items-center justify-center">
+                                                <i class="fas fa-building text-gray-600"></i>
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">FXTM</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">ECN</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">0.5 pips</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Não</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                        <a href="#" class="text-accent hover:text-green-600">Abrir Conta</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing" class="mb-16">
+            <h2 class="text-3xl font-bold mb-6">Licenciamento</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold mb-4 text-center">Mensal</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold">$97</span>
+                        <span class="text-gray-600">/mês</span>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Licença para 1 terminal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Atualizações incluídas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Suporte por e-mail</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Cancelamento a qualquer momento</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-accent hover:bg-green-600 text-white py-3 px-4 rounded-md font-medium transition-all">
+                        Assinar Mensalmente
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-lg border-2 border-accent relative">
+                    <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">MAIS POPULAR</div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Trimestral</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold">$87</span>
+                        <span class="text-gray-600">/mês</span>
+                        <div class="text-sm text-gray-500">Cobrado $261 a cada 3 meses</div>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Licença para 1 terminal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Atualizações incluídas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Suporte prioritário</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>10% de desconto</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Relatórios mensais exclusivos</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-accent hover:bg-green-600 text-white py-3 px-4 rounded-md font-medium transition-all">
+                        Assinar Trimestralmente
+                    </button>
+                </div>
+                
+                <div class="bg-white p-8 rounded-lg shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold mb-4 text-center">Anual</h3>
+                    <div class="text-center mb-6">
+                        <span class="text-4xl font-bold">$77</span>
+                        <span class="text-gray-600">/mês</span>
+                        <div class="text-sm text-gray-500">Cobrado $924 anualmente</div>
+                    </div>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Licença para 1 terminal</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Atualizações incluídas</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Suporte VIP 24/5</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>20% de desconto</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Relatórios mensais exclusivos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-accent mt-1 mr-3"></i>
+                            <span>Configuração personalizada</span>
+                        </li>
+                    </ul>
+                    <button class="w-full bg-accent hover:bg-green-600 text-white py-3 px-4 rounded-md font-medium transition-all">
+                        Assinar Anualmente
+                    </button>
+                </div>
+            </div>
+            
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <h3 class="text-xl font-bold mb-4">Perguntas Frequentes</h3>
+                <div class="space-y-4">
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="flex justify-between items-center w-full text-left font-medium focus:outline-none">
+                            <span>Como é feita a instalação do EA?</span>
+                            <i class="fas fa-chevron-down text-accent"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600">
+                            <p>Após a compra, você receberá um guia passo a passo com instruções detalhadas para instalar o EA no seu MetaTrader. O processo é simples e leva menos de 5 minutos. Também oferecemos suporte gratuito para instalação se necessário.</p>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="flex justify-between items-center w-full text-left font-medium focus:outline-none">
+                            <span>Posso testar o EA antes de comprar?</span>
+                            <i class="fas fa-chevron-down text-accent"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600">
+                            <p>Sim, oferecemos uma versão de demonstração com funcionalidade limitada para que você possa testar o EA em sua conta demo. Entre em contato conosco para solicitar acesso à demonstração.</p>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="flex justify-between items-center w-full text-left font-medium focus:outline-none">
+                            <span>O EA funciona em contas demo?</span>
+                            <i class="fas fa-chevron-down text-accent"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600">
+                            <p>Sim, o QuantumFX Pro funciona tanto em contas demo quanto reais. Recomendamos sempre testar novas configurações em conta demo antes de aplicar em conta real.</p>
+                        </div>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <button class="flex justify-between items-center w-full text-left font-medium focus:outline-none">
+                            <span>Qual é a política de reembolso?</span>
+                            <i class="fas fa-chevron-down text-accent"></i>
+                        </button>
+                        <div class="mt-2 text-gray-600">
+                            <p>Oferecemos garantia de satisfação de 7 dias. Se dentro deste período você não estiver satisfeito com os resultados, basta nos contatar para solicitar o reembolso total.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo" class="mb-16 bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="md:flex">
+                <div class="md:w-1/2 p-8">
+                    <h2 class="text-3xl font-bold mb-4">Solicite uma Demonstração</h2>
+                    <p class="mb-6">Preencha o formulário para receber uma versão de demonstração do QuantumFX Pro para testar em sua conta demo.</p>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block font-medium mb-2">Nome</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label class="block font-medium mb-2">E-mail</label>
+                            <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent" required>
+                        </div>
+                        <div>
+                            <label class="block font-medium mb-2">Corretora (se aplicável)</label>
+                            <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block font-medium mb-2">Plataforma</label>
+                            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent">
+                                <option>MetaTrader 4</option>
+                                <option>MetaTrader 5</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-accent hover:bg-green-600 text-white py-3 px-4 rounded-md font-medium transition-all">
+                            Solicitar Demonstração <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="md:w-1/2 bg-gray-800 flex items-center justify-center p-8">
+                    <div class="text-center text-white">
+                        <i class="fas fa-robot text-6xl text-accent mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Teste o QuantumFX Pro</h3>
+                        <p>Experimente nosso EA por 7 dias gratuitamente em sua conta demo antes de tomar sua decisão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <a href="#" class="flex items-center mb-4">
+                        <i class="fas fa-robot text-2xl text-accent mr-2"></i>
+                        <span class="text-xl font-bold">AutoTradeX</span>
+                    </a>
+                    <p class="mb-4">Soluções avançadas em trading algorítmico para traders e investidores.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-accent transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent transition-all">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Produtos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent transition-all">Expert Advisors</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Indicadores Personalizados</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Scripts de Trading</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Desenvolvimento Sob Demanda</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent transition-all">Blog</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Tutoriais</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Documentação</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Jurídico</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-accent transition-all">Termos de Uso</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Política de Privacidade</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Política de Reembolso</a></li>
+                        <li><a href="#" class="hover:text-accent transition-all">Isenção de Responsabilidade</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700">
+                <div class="md:flex md:items-center md:justify-between">
+                    <p class="text-sm text-gray-300 mb-4 md:mb-0">© 2023 AutoTradeX. Todos os direitos reservados.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-sm text-gray-300 hover:text-accent transition-all">Termos</a>
+                        <a href="#" class="text-sm text-gray-300 hover:text-accent transition-all">Privacidade</a>
+                        <a href="#" class="text-sm text-gray-300 hover:text-accent transition-all">Cookies</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // FAQ accordion
+        document.querySelectorAll('#pricing button').forEach(button => {
+            button.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.className = 'fas fa-chevron-down text-accent';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.className = 'fas fa-chevron-up text-accent';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
